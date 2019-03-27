@@ -1,0 +1,13 @@
+package: github.com/Felyne/gomicrorpc
+import:
+- package: github.com/golang/protobuf
+  subpackages:
+  - proto
+- package: github.com/micro/go-micro
+  subpackages:
+  - client
+  - registry
+  - server
+- package: github.com/micro/go-plugins
+  subpackages:
+  - registry/etcdv3
