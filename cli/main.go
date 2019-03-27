@@ -36,5 +36,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(rsp)
+	fmt.Printf("%#v", rsp)
 }
