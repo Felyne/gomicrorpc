@@ -11,7 +11,7 @@ import (
 )
 
 var etcdList = []string{
-	"http://192.168.0.81:2379", "http://192.168.0.82:2379", "http://192.168.0.83:2379",
+	"http://127.0.0.1:2379",
 }
 
 func main() {
@@ -36,5 +36,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%#v", rsp)
+	fmt.Printf("%+v", rsp)
 }

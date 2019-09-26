@@ -4,15 +4,13 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/Felyne/gomicrorpc/proto"
+	model "github.com/Felyne/gomicrorpc/proto"
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/registry"
 	"github.com/micro/go-plugins/registry/etcdv3"
 )
 
-var etcdList = []string{
-	"http://192.168.0.81:2379", "http://192.168.0.82:2379", "http://192.168.0.83:2379",
-}
+var etcdList = []string{"http://127.0.0.1:2379"}
 
 type Say struct{}
 
