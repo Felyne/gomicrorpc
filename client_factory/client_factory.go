@@ -9,11 +9,10 @@ import (
 
 type NewClientFunc func(c client.Client) interface{}
 
-func ServiceClient(etcdAddrs []string, newFunc NewClientFunc) interface{} {
+func NewClient(etcdAddrs []string, newFunc NewClientFunc) interface{} {
 	reg := etcdv3.NewRegistry(func(op *registry.Options) {
 		op.Addrs = etcdAddrs
 	})
-
 	service := micro.NewService(
 		micro.Registry(reg),
 	)

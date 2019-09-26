@@ -20,7 +20,7 @@ var (
 
 func main() {
 	serviceName := pb.ServiceName_name[0]
-	service_launch.StartService(serviceName, Version, BuildTime, setup)
+	service_launch.Start(serviceName, Version, BuildTime, setup)
 }
 
 func setup(s server.Server, cfgContent string) error {
@@ -29,6 +29,6 @@ func setup(s server.Server, cfgContent string) error {
 		log.Printf("NewConfigData() failed: %v", err)
 		return err
 	}
-	srv := impl.NewSayService(cfg)
-	return pb.RegisterSayHandler(s, srv)
+	h := impl.NewSayService(cfg)
+	return pb.RegisterSayHandler(s, h)
 }

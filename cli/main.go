@@ -15,7 +15,7 @@ var etcdList = []string{
 }
 
 func GetClient(etcdAddrs []string) pb.SayService {
-	cli := client_factory.ServiceClient(etcdAddrs,
+	cli := client_factory.NewClient(etcdAddrs,
 		func(c client.Client) interface{} {
 			return pb.NewSayService(pb.ServiceName_name[0], c)
 		})
@@ -23,9 +23,8 @@ func GetClient(etcdAddrs []string) pb.SayService {
 }
 
 func main() {
-
 	cli := GetClient(etcdList)
-	rsp, err := cli.Hello(context.TODO(), &pb.SayParam{Msg: "hello server!!!"})
+	rsp, err := cli.Hello(context.TODO(), &pb.SayParam{Msg: "hello server"})
 	if err != nil {
 		panic(err)
 	}

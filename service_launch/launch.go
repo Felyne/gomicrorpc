@@ -7,11 +7,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/micro/go-micro"
+
 	"github.com/Felyne/config_center"
 
 	"github.com/coreos/etcd/clientv3"
 
-	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/registry"
 	"github.com/micro/go-micro/server"
 	"github.com/micro/go-plugins/registry/etcdv3"
@@ -21,32 +22,36 @@ import (
 type SetupFunc func(s server.Server, cfgContent string) error
 
 // example: ./server dev 0 localhost:2379
-func StartService(serviceName, version, buildTime string, setup SetupFunc) {
+func Start(serviceName, version, buildTime string, setup SetupFunc) {
 	if len(os.Args) < 4 {
 		if len(os.Args) == 2 && os.Args[1] == "-v" {
 			fmt.Printf("version: %s\nbuildTime: %s\nserviceName: %s\n",
 				version, buildTime, serviceName)
-			os.Exit(1)
 		} else {
 			help()
 		}
+		os.Exit(1)
 	}
 	envName := os.Args[1]
-	port := os.Args[2] //可以指定服务端口，0则自动分配
+	port := os.Args[2] //监听端口，0表示自动分配
 	etcdAddrs := os.Args[3:]
 
-	err := runService(serviceName, version, buildTime, envName, port, etcdAddrs, setup)
+	err := run(serviceName, version, envName, port, etcdAddrs, setup)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func runService(serviceName, version, buildTime, envName, port string, etcdAddrs []string, setup SetupFunc) error {
+func run(serviceName, version, envName, port string, etcdAddrs []string, setup SetupFunc) error {
 	etcdAddrs = withHttpAddr(etcdAddrs...)
 	cli, err := clientv3.New(clientv3.Config{
 		Endpoints:   etcdAddrs,
 		DialTimeout: 15 * time.Second,
 	})
+	if err != nil {
+		return err
+	}
+
 	cc := config_center.NewConfigCenter(cli, envName)
 	cfgContent, err := cc.GetConfig(serviceName)
 	if err != nil {
@@ -66,6 +71,9 @@ func runService(serviceName, version, buildTime, envName, port string, etcdAddrs
 	if listenAddr != "" {
 		options = append(options, micro.Address(listenAddr))
 	}
+	if version != "" {
+		options = append(options, micro.Version(version))
+	}
 
 	service := micro.NewService(options...)
 	service.Init()
@@ -77,6 +85,15 @@ func runService(serviceName, version, buildTime, envName, port string, etcdAddrs
 	return service.Run()
 }
 
+func help() {
+	info := `
+Usage:%s [envName] [port] etcdAddr...
+envName  env name
+port     port for listen.if value is 0,listen on a random port
+`
+	fmt.Printf(info, os.Args[0])
+}
+
 func withHttpAddr(addrs ...string) []string {
 	var list []string
 	for _, a := range addrs {
@@ -86,16 +103,6 @@ func withHttpAddr(addrs ...string) []string {
 		list = append(list, a)
 	}
 	return list
-}
-
-func help() {
-	info := `
-Usage:%s [envName] [port] etcdAddr...
-envName  env name
-port     port for listen.if value is 0,listen on a random port
-`
-	fmt.Printf(info, os.Args[0])
-	os.Exit(1)
 }
 
 func checkPort(port string) (addr string) {
