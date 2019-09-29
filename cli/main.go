@@ -3,16 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/Felyne/gomicrorpc/client_factory"
 
 	pb "github.com/Felyne/gomicrorpc/proto"
 	"github.com/micro/go-micro/client"
 )
-
-var etcdList = []string{
-	"http://127.0.0.1:2379",
-}
 
 func GetClient(etcdAddrs []string) pb.SayService {
 	cli := client_factory.NewClient(etcdAddrs,
@@ -23,7 +20,12 @@ func GetClient(etcdAddrs []string) pb.SayService {
 }
 
 func main() {
-	cli := GetClient(etcdList)
+	if len(os.Args) < 2 {
+		fmt.Printf(`Usage:%s [etcdAddr...]\n`, os.Args[0])
+		os.Exit(1)
+	}
+	etcdAddrs := os.Args[1:]
+	cli := GetClient(etcdAddrs)
 	rsp, err := cli.Hello(context.TODO(), &pb.SayParam{Msg: "hello server"})
 	if err != nil {
 		panic(err)

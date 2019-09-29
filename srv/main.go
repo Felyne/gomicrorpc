@@ -3,13 +3,12 @@ package main
 import (
 	"log"
 
-	"github.com/Felyne/gomicrorpc/service_launch"
-
 	"github.com/Felyne/gomicrorpc/impl"
 
 	"github.com/astaxie/beego/config"
 
 	pb "github.com/Felyne/gomicrorpc/proto"
+	"github.com/Felyne/service_launch"
 	"github.com/micro/go-micro/server"
 )
 
