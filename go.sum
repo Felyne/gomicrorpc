@@ -43,8 +43,10 @@ github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym
 github.com/DataDog/datadog-go v2.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
 github.com/DataDog/zstd v1.3.6-0.20190409195224-796139022798/go.mod h1:1jcaCB/ufaK+sKp1NBhlGmpz41jOoPQ35bpF36t7BBo=
 github.com/DataDog/zstd v1.4.1/go.mod h1:1jcaCB/ufaK+sKp1NBhlGmpz41jOoPQ35bpF36t7BBo=
-github.com/Felyne/service_launch v0.0.0-20190929033201-8d9799d6f6f0 h1:MpdW4B83IuZGRs3nE4gKNIei+HamAsI/nQfs8XGCmuY=
-github.com/Felyne/service_launch v0.0.0-20190929033201-8d9799d6f6f0/go.mod h1:+U16clJ8H6p3ABaupJLtdOua5zcUkfsioGHi961bfhE=
+github.com/Felyne/config_center v1.0.2 h1:Ano1C08ag6GX0b+sb+VtI1Uapn0Cl51ZOxh7RFjunOE=
+github.com/Felyne/config_center v1.0.2/go.mod h1:Wk/lRjgSHrO4So8zf8bkP8ssUWvLIpUVKxO3HoJCEK4=
+github.com/Felyne/service_launch v0.0.0-20191023081816-f91af0ccde02 h1:C/r5ZPCUUCAgH80KXVegEMY1MbqlPDgPtAtOIK4MVzM=
+github.com/Felyne/service_launch v0.0.0-20191023081816-f91af0ccde02/go.mod h1:fXgO32BCk1+YnPrWZSdFW5I4hhgiOeAQPrSe0sOtVFo=
 github.com/GoogleCloudPlatform/cloudsql-proxy v0.0.0-20190418212003-6ac0b49e7197/go.mod h1:aJ4qN3TfrelA6NZ6AXsXRfmEVaYin3EDbSPJrKS8OXo=
 github.com/GoogleCloudPlatform/cloudsql-proxy v0.0.0-20190725230627-253d1edd4416/go.mod h1:aJ4qN3TfrelA6NZ6AXsXRfmEVaYin3EDbSPJrKS8OXo=
 github.com/Knetic/govaluate v3.0.0+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=

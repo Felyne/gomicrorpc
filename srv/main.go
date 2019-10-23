@@ -3,8 +3,6 @@ package main
 import (
 	"log"
 
-	"github.com/Felyne/gomicrorpc/impl"
-
 	"github.com/astaxie/beego/config"
 
 	pb "github.com/Felyne/gomicrorpc/proto"
@@ -19,7 +17,7 @@ var (
 
 func main() {
 	serviceName := pb.ServiceName_name[0]
-	service_launch.Start(serviceName, Version, BuildTime, setup)
+	service_launch.Run(serviceName, Version, BuildTime, setup)
 }
 
 func setup(s server.Server, cfgContent string) error {
@@ -28,6 +26,6 @@ func setup(s server.Server, cfgContent string) error {
 		log.Printf("NewConfigData() failed: %v", err)
 		return err
 	}
-	h := impl.NewSayService(cfg)
+	h := NewSayService(cfg)
 	return pb.RegisterSayHandler(s, h)
 }
