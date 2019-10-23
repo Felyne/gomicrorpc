@@ -25,5 +25,5 @@ go build
 
 #### 参考文档
   - [etcd官方文档](https://etcd.io/docs/v3.4.0/)
-  - [gRPC 官方文档中文版](https://doc.oschina.net/grpc)
+  - [gRPC官方文档中文版](https://doc.oschina.net/grpc)
   - [Protobuf3语言指南](https://blog.csdn.net/u011518120/article/details/54604615)
