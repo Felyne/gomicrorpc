@@ -3,7 +3,7 @@ module github.com/Felyne/gomicrorpc
 go 1.12
 
 require (
-	github.com/Felyne/service_launch v0.0.0-20191023095551-7ed4d284ceea
+	github.com/Felyne/service_launch v0.0.0-20191023154052-386ad0f219d6
 	github.com/astaxie/beego v1.12.0
 	github.com/golang/protobuf v1.3.2
 	github.com/micro/go-micro v1.10.0

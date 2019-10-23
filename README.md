@@ -1,4 +1,4 @@
-### 基于go-micro和etcd服务发现的demo
+### 基于go-micro和etcd服务中心的demo
 
 #### 准备
 1.启动etcd，这里是`localhost:2379`
@@ -11,6 +11,7 @@
 #### 服务端
 ```shell
 
+# 先装好grpc用到的东西
 bash proto/gen.sh
 cd srv && make
 ./srv dev 0 localhost:2379
