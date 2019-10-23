@@ -10,6 +10,9 @@
 
 #### 服务端
 ```shell
+
+bash proto/gen.sh
+
 cd srv
 make
 ./srv dev 0 localhost:2379
@@ -21,3 +24,7 @@ cd cli
 go build
 ./cli dev localhost:2379
 ```
+
+#### 参考文档
+  - [gRPC 官方文档中文版](https://doc.oschina.net/grpc)
+  - [Protobuf3语言指南](https://blog.csdn.net/u011518120/article/details/54604615)

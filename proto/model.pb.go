@@ -3,9 +3,11 @@
 
 package model
 
-import proto "github.com/golang/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import (
+	fmt "fmt"
+	proto "github.com/golang/protobuf/proto"
+	math "math"
+)
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -16,7 +18,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type ServiceName int32
 
@@ -27,6 +29,7 @@ const (
 var ServiceName_name = map[int32]string{
 	0: "SAY_SERVICE",
 }
+
 var ServiceName_value = map[string]int32{
 	"SAY_SERVICE": 0,
 }
@@ -34,8 +37,9 @@ var ServiceName_value = map[string]int32{
 func (x ServiceName) String() string {
 	return proto.EnumName(ServiceName_name, int32(x))
 }
+
 func (ServiceName) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_ab4e75353ab22af5, []int{0}
+	return fileDescriptor_d10048d769ba1c4e, []int{0}
 }
 
 type RespType int32
@@ -51,6 +55,7 @@ var RespType_name = map[int32]string{
 	1: "ASCEND",
 	2: "DESCEND",
 }
+
 var RespType_value = map[string]int32{
 	"NONE":    0,
 	"ASCEND":  1,
@@ -60,8 +65,9 @@ var RespType_value = map[string]int32{
 func (x RespType) String() string {
 	return proto.EnumName(RespType_name, int32(x))
 }
+
 func (RespType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_model_ab4e75353ab22af5, []int{1}
+	return fileDescriptor_d10048d769ba1c4e, []int{1}
 }
 
 type SayParam struct {
@@ -75,16 +81,17 @@ func (m *SayParam) Reset()         { *m = SayParam{} }
 func (m *SayParam) String() string { return proto.CompactTextString(m) }
 func (*SayParam) ProtoMessage()    {}
 func (*SayParam) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_ab4e75353ab22af5, []int{0}
+	return fileDescriptor_d10048d769ba1c4e, []int{0}
 }
+
 func (m *SayParam) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SayParam.Unmarshal(m, b)
 }
 func (m *SayParam) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SayParam.Marshal(b, m, deterministic)
 }
-func (dst *SayParam) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SayParam.Merge(dst, src)
+func (m *SayParam) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SayParam.Merge(m, src)
 }
 func (m *SayParam) XXX_Size() int {
 	return xxx_messageInfo_SayParam.Size(m)
@@ -114,16 +121,17 @@ func (m *Pair) Reset()         { *m = Pair{} }
 func (m *Pair) String() string { return proto.CompactTextString(m) }
 func (*Pair) ProtoMessage()    {}
 func (*Pair) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_ab4e75353ab22af5, []int{1}
+	return fileDescriptor_d10048d769ba1c4e, []int{1}
 }
+
 func (m *Pair) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Pair.Unmarshal(m, b)
 }
 func (m *Pair) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_Pair.Marshal(b, m, deterministic)
 }
-func (dst *Pair) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Pair.Merge(dst, src)
+func (m *Pair) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Pair.Merge(m, src)
 }
 func (m *Pair) XXX_Size() int {
 	return xxx_messageInfo_Pair.Size(m)
@@ -164,16 +172,17 @@ func (m *SayResponse) Reset()         { *m = SayResponse{} }
 func (m *SayResponse) String() string { return proto.CompactTextString(m) }
 func (*SayResponse) ProtoMessage()    {}
 func (*SayResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_model_ab4e75353ab22af5, []int{2}
+	return fileDescriptor_d10048d769ba1c4e, []int{2}
 }
+
 func (m *SayResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SayResponse.Unmarshal(m, b)
 }
 func (m *SayResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return xxx_messageInfo_SayResponse.Marshal(b, m, deterministic)
 }
-func (dst *SayResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SayResponse.Merge(dst, src)
+func (m *SayResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SayResponse.Merge(m, src)
 }
 func (m *SayResponse) XXX_Size() int {
 	return xxx_messageInfo_SayResponse.Size(m)
@@ -213,17 +222,17 @@ func (m *SayResponse) GetType() RespType {
 }
 
 func init() {
+	proto.RegisterEnum("model.ServiceName", ServiceName_name, ServiceName_value)
+	proto.RegisterEnum("model.RespType", RespType_name, RespType_value)
 	proto.RegisterType((*SayParam)(nil), "model.SayParam")
 	proto.RegisterType((*Pair)(nil), "model.Pair")
 	proto.RegisterType((*SayResponse)(nil), "model.SayResponse")
 	proto.RegisterMapType((map[string]*Pair)(nil), "model.SayResponse.HeaderEntry")
-	proto.RegisterEnum("model.ServiceName", ServiceName_name, ServiceName_value)
-	proto.RegisterEnum("model.RespType", RespType_name, RespType_value)
 }
 
-func init() { proto.RegisterFile("proto/model.proto", fileDescriptor_model_ab4e75353ab22af5) }
+func init() { proto.RegisterFile("proto/model.proto", fileDescriptor_d10048d769ba1c4e) }
 
-var fileDescriptor_model_ab4e75353ab22af5 = []byte{
+var fileDescriptor_d10048d769ba1c4e = []byte{
 	// 313 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x64, 0x51, 0x4d, 0x4b, 0xc3, 0x40,
 	0x10, 0x6d, 0x9a, 0x0f, 0xdb, 0x59, 0xb0, 0x71, 0x0f, 0x12, 0x8a, 0x94, 0x1a, 0x2f, 0xa5, 0x60,
