@@ -14,7 +14,7 @@
 # 先装好grpc用到的东西
 bash proto/gen.sh
 cd srv && make
-./srv dev 0 localhost:2379
+./say_service dev 0 localhost:2379
 ```
 
 #### 客户端

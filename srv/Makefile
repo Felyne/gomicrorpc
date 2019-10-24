@@ -1,8 +1,7 @@
 
 HEAD = `git rev-parse HEAD`
 TIME = `date +%FT%T%z`
-
-BINARY = "srv"
+BINARY = "say_service"
 
 default: gotool
 	@CGO_ENABLED=0 go build -ldflags "-X main.Version=${HEAD} -X main.BuildTime=${TIME}" -o ${BINARY}
