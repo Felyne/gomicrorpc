@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Felyne/service_launch"
+	"github.com/Felyne/launcher"
 
 	"github.com/Felyne/gomicrorpc/client_factory"
 
@@ -14,7 +14,7 @@ import (
 )
 
 func GetClient(envName string, etcdAddrs []string) pb.SayService {
-	serviceName := service_launch.GetServiceRegName(
+	serviceName := launcher.GetServiceRegName(
 		envName, pb.ServiceName_name[0])
 
 	cli := client_factory.NewClient(etcdAddrs,
