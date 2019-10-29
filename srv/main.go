@@ -6,7 +6,7 @@ import (
 	"github.com/astaxie/beego/config"
 
 	pb "github.com/Felyne/gomicrorpc/proto"
-	"github.com/Felyne/service_launch"
+	"github.com/Felyne/launcher"
 	"github.com/micro/go-micro/server"
 )
 
@@ -17,7 +17,7 @@ var (
 
 func main() {
 	serviceName := pb.ServiceName_name[0]
-	service_launch.Run(serviceName, Version, BuildTime, setup)
+	launcher.Run(serviceName, Version, BuildTime, setup)
 }
 
 func setup(s server.Server, cfgContent string) error {

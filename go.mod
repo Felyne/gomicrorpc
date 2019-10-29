@@ -3,10 +3,9 @@ module github.com/Felyne/gomicrorpc
 go 1.12
 
 require (
-	github.com/Felyne/service_launch v0.0.0-20191023154052-386ad0f219d6
+	github.com/Felyne/launcher v0.0.0-20191029030133-2e721c439338
 	github.com/astaxie/beego v1.12.0
 	github.com/golang/protobuf v1.3.2
-	github.com/micro/go-micro v1.10.0
-	github.com/micro/go-plugins v1.3.0
-	github.com/nats-io/nats-server/v2 v2.1.0 // indirect
+	github.com/micro/go-micro v1.14.0
+	github.com/micro/go-plugins v1.4.0
 )
