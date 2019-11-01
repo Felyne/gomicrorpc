@@ -14,7 +14,7 @@ import (
 )
 
 func GetClient(envName string, etcdAddrs []string) pb.SayService {
-	serviceName := launcher.GetServiceRegName(
+	serviceName := launcher.GenServiceRegName(
 		envName, pb.ServiceName_name[0])
 
 	cli := client_factory.NewClient(etcdAddrs,
