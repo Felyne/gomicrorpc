@@ -61,6 +61,7 @@ github.com/Felyne/configcenter v1.0.4 h1:GtxocxqsNIjlTo+QuwMvZOAYXg/oDzLfvgElqGH
 github.com/Felyne/configcenter v1.0.4/go.mod h1:ajA/nm9QJw0OmBrF53IDCnJfB9qSUMgrMl2TvZRFiGA=
 github.com/Felyne/launcher v1.0.0 h1:6aBZbijSmvNVY8ptt0hu3v0c1r5G0YcwkymsJOCy7WU=
 github.com/Felyne/launcher v1.0.0/go.mod h1:Rtazc8FRQH5lwgalQlUkiST4mEZK3ZB6VFxYu965uOY=
+github.com/Felyne/launcher v1.0.1-0.20191104124221-d6abe9387fe1/go.mod h1:Rtazc8FRQH5lwgalQlUkiST4mEZK3ZB6VFxYu965uOY=
 github.com/GoogleCloudPlatform/cloudsql-proxy v0.0.0-20190418212003-6ac0b49e7197/go.mod h1:aJ4qN3TfrelA6NZ6AXsXRfmEVaYin3EDbSPJrKS8OXo=
 github.com/GoogleCloudPlatform/cloudsql-proxy v0.0.0-20190605020000-c4ba1fdf4d36/go.mod h1:aJ4qN3TfrelA6NZ6AXsXRfmEVaYin3EDbSPJrKS8OXo=
 github.com/Knetic/govaluate v3.0.0+incompatible/go.mod h1:r7JcOSlj0wfOMncg0iLm8Leh48TZaKVeNIfJntJ2wa0=
