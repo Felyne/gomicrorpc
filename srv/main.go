@@ -1,13 +1,11 @@
 package main
 
 import (
-	"log"
+	"github.com/micro/go-micro"
 
-	"github.com/astaxie/beego/config"
-
+	"github.com/BurntSushi/toml"
 	pb "github.com/Felyne/gomicrorpc/proto"
 	"github.com/Felyne/launcher"
-	"github.com/micro/go-micro/server"
 )
 
 var (
@@ -20,12 +18,11 @@ func main() {
 	launcher.Run(serviceName, Version, BuildTime, setup)
 }
 
-func setup(s server.Server, cfgContent string) error {
-	cfg, err := config.NewConfigData("ini", []byte(cfgContent))
-	if err != nil {
-		log.Printf("NewConfigData() failed: %v", err)
+func setup(service micro.Service, cfgContent string) error {
+	opt := Options{}
+	if _, err := toml.Decode(cfgContent, &opt); err != nil {
 		return err
 	}
-	h := NewSayService(cfg)
-	return pb.RegisterSayHandler(s, h)
+	h := NewSayService(opt)
+	return pb.RegisterSayHandler(service.Server(), h)
 }

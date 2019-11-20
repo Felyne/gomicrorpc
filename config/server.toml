@@ -1,0 +1,3 @@
+RedisAddr = "localhost:6379"
+DB = 0
+Password = "123456"

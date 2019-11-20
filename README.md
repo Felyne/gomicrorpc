@@ -5,16 +5,18 @@
 
 2.利用[管理工具](https://github.com/Felyne/admin_tool)上传服务端的配置
 ```shell
-./admin_tool config set dev SAY_SERVICE ./config/server.conf localhost:2379
+# say是proto文件定义的服务名
+./admin_tool config set dev say ./config/server.toml localhost:2379
 ```
 
 #### 服务端
 ```shell
 
 # 先装好grpc用到的东西
-bash proto/gen.sh
+cd proto && bash gen.sh
+cd ../
 cd srv && make
-./say_service dev 0 localhost:2379
+./say dev 0 localhost:2379
 ```
 
 #### 客户端

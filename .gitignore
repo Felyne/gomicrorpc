@@ -13,4 +13,4 @@
 .idea
 .vscode
 cli/cli
-srv/srv
+srv/say

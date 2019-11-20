@@ -6,15 +6,20 @@ import (
 	"fmt"
 
 	pb "github.com/Felyne/gomicrorpc/proto"
-	"github.com/astaxie/beego/config"
 )
+
+// 仅做测试用
+type Options struct {
+	RedisAddr string
+	DB        int
+	Password  string
+}
 
 type SayService struct{}
 
 //一个简单的服务端实现
-func NewSayService(cfg config.Configer) *SayService {
-	conf := cfg.String("redis.addr") //读取配置，初始化服务
-	fmt.Println("conf:", conf)
+func NewSayService(opt Options) *SayService {
+	fmt.Printf("%+v\n", opt)
 	return &SayService{}
 }
 

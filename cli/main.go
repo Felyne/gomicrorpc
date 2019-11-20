@@ -5,23 +5,27 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/micro/go-micro/registry"
+	"github.com/micro/go-plugins/registry/etcdv3"
+
+	"github.com/micro/go-micro"
+
 	"github.com/Felyne/launcher"
 
-	"github.com/Felyne/gomicrorpc/client_factory"
-
 	pb "github.com/Felyne/gomicrorpc/proto"
-	"github.com/micro/go-micro/client"
 )
 
 func GetClient(envName string, etcdAddrs []string) pb.SayService {
+	reg := etcdv3.NewRegistry(func(op *registry.Options) {
+		op.Addrs = etcdAddrs
+	})
+	service := micro.NewService(
+		micro.Registry(reg),
+	)
+	service.Init()
 	serviceName := launcher.GenServiceRegName(
 		envName, pb.ServiceName_name[0])
-
-	cli := client_factory.NewClient(etcdAddrs,
-		func(c client.Client) interface{} {
-			return pb.NewSayService(serviceName, c)
-		})
-	return cli.(pb.SayService)
+	return pb.NewSayService(serviceName, service.Client())
 }
 
 func main() {

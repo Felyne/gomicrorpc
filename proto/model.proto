@@ -3,7 +3,7 @@ syntax = "proto3";
 package model;
 
 enum ServiceName {
-    SAY_SERVICE = 0;
+    say = 0;
 }
 
 message SayParam {
