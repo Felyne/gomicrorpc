@@ -18,7 +18,7 @@ func main() {
 	launcher.Run(serviceName, Version, BuildTime, setup)
 }
 
-func setup(service micro.Service, cfgContent string) error {
+func setup(service micro.Service, _, cfgContent string) error {
 	opt := Options{}
 	if _, err := toml.Decode(cfgContent, &opt); err != nil {
 		return err
